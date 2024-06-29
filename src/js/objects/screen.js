@@ -5,7 +5,11 @@ const screen = {
                             <img src="${user.avatarUrl}" alt="Foto do perfil do usuário"/>
                             <div class= "data">
                                 <h1>${user.name ?? 'Não possui nome cadastrado 😒'}</h1>>
+                                <p>Seguidores:  ${user.followers ?? 'Não possui seguidores 😒'}</p>
+                                <p>Seguindo:  ${user.following ?? 'Não segue ninguém 😒'}</p>
+                                <br>
                                 <p>${user.bio ?? 'Não possui bio cadastrada 😒'}</p>
+                                
                             </div>
                         </div>`
         let repositoriesItens = ""
@@ -17,9 +21,25 @@ const screen = {
                                                 <ul>${repositoriesItens}</ul>
                                             </div>`
         }
-    },
-    renderNotFound(){
-        this.userProfile.innerHTML = "<h3>Usuário não encontrado</h3>"
+        let eventsItens = ""
+        user.events.forEach(event => {
+            let message = "";
+        
+            if (event.type === 'PushEvent' && event.payload && event.payload.commits && event.payload.commits.length > 0) {
+                message = event.payload.commits[0].message; // Pega a mensagem do primeiro commit
+            } else if (event.type === 'CreateEvent') {
+                message = "Sem mensagem de commit";
+            }
+        
+            eventsItens += `<li><span>${event.repo.name}</span> - ${message}</li>`;
+        });
+        
+        if (user.events.length > 0) {
+            this.userProfile.innerHTML += `<div class="events section">
+                                                <h2>Eventos</h2>
+                                                <ul>${eventsItens}</ul>
+                                            </div>`;
+        }
     }
 }
 

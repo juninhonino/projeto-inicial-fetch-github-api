@@ -34,6 +34,7 @@ main {
   padding: 70px 0;
 }
 
+
 .container {
   width: 60%; /* se for uma tela menor que 980px vai se adaptar a 70% */
   max-width: 960px; /* quando chegar em 980px para de aumentar */
@@ -146,6 +147,21 @@ main {
 .container .profile-data .repositories ul li a:hover{
   background-color:hotpink;
   color: #fff
+}
+
+/* EVENTOS */
+
+.container .profile-data .events span{
+  font-weight: 700;
+}
+
+.container .profile-data .events li{
+  margin-bottom: 15px;
+}
+
+.container .profile-data .events h2{
+  margin-bottom: 30px;
+  text-align: center;
 }
 
 .container .profile-data.hide{
