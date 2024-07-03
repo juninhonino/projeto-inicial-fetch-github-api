@@ -144,6 +144,13 @@ main {
   transition: 0.3s ease-in-out;
 }
 
+.container .profile-data .repositories span{
+  background-color: rgb(120, 58, 219);
+  border-radius: 4px;
+  padding: 3px;
+  color: #fff;
+}
+
 .container .profile-data .repositories ul li a:hover{
   background-color:hotpink;
   color: #fff
